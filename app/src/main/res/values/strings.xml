@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">CV Builder</string>
     <string name="start_building_your_cv">Start Building your CV!</string>
+    <string name="preview_cv">Preview CV</string>
+    <string name="sample_email">johndoe@gmail.com</string>
+    <string name="sample_phone">+XX-XXX-XXXXXXX</string>
+    <string name="sample_name">John Doe</string>
+    <string name="sample_url">github.com/John_Doe</string>
 </resources>
