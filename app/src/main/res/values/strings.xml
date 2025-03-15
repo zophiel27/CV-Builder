@@ -6,4 +6,20 @@
     <string name="sample_phone">+XX-XXX-XXXXXXX</string>
     <string name="sample_name">John Doe</string>
     <string name="sample_url">github.com/John_Doe</string>
+    <string name="lorem_ipsum">Lorem Ipsum</string>
+    <string name="summary">Summary</string>
+    <string name="share_cv">Share CV</string>
+    <string name="education">Education</string>
+    <string name="bs_cs">BS(CS)</string>
+    <string name="experience">Experience</string>
+    <string name="exp_time">2020 - 2024</string>
+    <string name="sample_company">XYZ Company</string>
+    <string name="certifications">Certifications</string>
+    <string name="sample_certificate">XYZ Certificate</string>
+    <string name="sample_org">ABC Org</string>
+    <string name="references">References</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="profile_picture">Profile Picture</string>
 </resources>

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,13 +15,7 @@ import android.widget.Toast;
 public class Home extends AppCompatActivity {
 
     Button btnProfile, btnPersonalDetails, btnSummary, btnEdu, btnExp, btnCert, btnRef, btnPreviewCV;
-    ActivityResultLauncher<Intent> getImageLauncher;
-    ActivityResultLauncher<Intent> getPersonalDetailLauncher;
-    ActivityResultLauncher<Intent> getSummaryLauncher;
-    ActivityResultLauncher<Intent> getEduLauncher;
-    ActivityResultLauncher<Intent> getExpLauncher;
-    ActivityResultLauncher<Intent> getCertLauncher;
-    ActivityResultLauncher<Intent> getRefLauncher;
+    ActivityResultLauncher<Intent> getImageLauncher, getPersonalDetailLauncher, getSummaryLauncher, getEduLauncher, getExpLauncher, getCertLauncher, getRefLauncher;
 
     Uri profilePic;
     String name, phone, email, url;
@@ -29,6 +24,7 @@ public class Home extends AppCompatActivity {
     String experience, time;
     String certifications;
     String references;
+    private static final String TAG = "Home";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,35 +52,35 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, Summary.class);
-                startActivity(i);
+                getSummaryLauncher.launch(i);
             }
         });
         btnEdu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, Education.class);
-                startActivity(i);
+                getEduLauncher.launch(i);
             }
         });
         btnExp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, Experience.class);
-                startActivity(i);
+                getExpLauncher.launch(i);
             }
         });
         btnCert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, Certifications.class);
-                startActivity(i);
+                getCertLauncher.launch(i);
             }
         });
         btnRef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, References.class);
-                startActivity(i);
+                getRefLauncher.launch(i);
             }
         });
         btnPreviewCV.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +91,7 @@ public class Home extends AppCompatActivity {
                 i.putExtra("email", email);
                 i.putExtra("phone", phone);
                 i.putExtra("url", url);
-//                i.putExtra("summary", summary);
+                i.putExtra("summary", summary);
 //                i.putExtra("education", education);
 //                i.putExtra("experience", experience);
 //                i.putExtra("certifications", certifications);
@@ -118,11 +114,14 @@ public class Home extends AppCompatActivity {
         btnRef = findViewById(R.id.btnReferences);
         btnPreviewCV = findViewById(R.id.btnPreviewCV);
 
+//        btnPreviewCV.setEnabled(false);
+
         getImageLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             (result)->{
                 if(result.getResultCode() == RESULT_OK && result.getData()!=null)
                 {
                     profilePic = result.getData().getData();
+                    checkIfReadyToPreview();
                 }
                 else
                 {
@@ -139,6 +138,16 @@ public class Home extends AppCompatActivity {
                     phone = dataIntent.getStringExtra("phone");
                     email = dataIntent.getStringExtra("email");
                     url = dataIntent.getStringExtra("url");
+                    Log.d(TAG, "DATA WAS RECEIVED");
+                    Log.d(TAG, "Received Name: " + name);
+                    Log.d(TAG, "Received Email: " + email);
+                    Log.d(TAG, "Received Phone: " + phone);
+                    Log.d(TAG, "Received Url: " + url);
+                    checkIfReadyToPreview();
+                }
+                else
+                {
+                    Log.d(TAG, "NO DATA RECEIVED");
                 }
             });
         getSummaryLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -147,6 +156,7 @@ public class Home extends AppCompatActivity {
                     {
                         Intent dataIntent = result.getData();
                         summary = dataIntent.getStringExtra("summary");
+                        checkIfReadyToPreview();
                     }
                 });
         getEduLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -156,6 +166,7 @@ public class Home extends AppCompatActivity {
                         Intent dataIntent = result.getData();
                         education = dataIntent.getStringExtra("education");
                         program = dataIntent.getStringExtra("program");
+                        checkIfReadyToPreview();
                     }
                 });
         getExpLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -165,6 +176,7 @@ public class Home extends AppCompatActivity {
                         Intent dataIntent = result.getData();
                         experience = dataIntent.getStringExtra("experience");
                         time = dataIntent.getStringExtra("time");
+                        checkIfReadyToPreview();
                     }
                 });
         getCertLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -173,6 +185,7 @@ public class Home extends AppCompatActivity {
                     {
                         Intent dataIntent = result.getData();
                         certifications = dataIntent.getStringExtra("certifications");
+                        checkIfReadyToPreview();
                     }
                 });
         getRefLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
@@ -181,7 +194,28 @@ public class Home extends AppCompatActivity {
                     {
                         Intent dataIntent = result.getData();
                         references = dataIntent.getStringExtra("references");
+                        checkIfReadyToPreview();
                     }
                 });
+    }
+    private void checkIfReadyToPreview() {
+//        if (profilePic != null &&
+//                name != null && !name.isEmpty() &&
+//                phone != null && !phone.isEmpty() &&
+//                email != null && !email.isEmpty() &&
+//                url != null && !url.isEmpty() &&
+//                summary != null && !summary.isEmpty() &&
+//                education != null && !education.isEmpty() &&
+//                program != null && !program.isEmpty() &&
+//                experience != null && !experience.isEmpty() &&
+//                time != null && !time.isEmpty() &&
+//                certifications != null && !certifications.isEmpty() &&
+//                references != null && !references.isEmpty()) {
+//
+//            btnPreviewCV.setEnabled(true);
+//            Toast.makeText(this, "CV is ready to preview!", Toast.LENGTH_SHORT).show();
+//        } else {
+//            btnPreviewCV.setEnabled(false);
+//        }
     }
 }

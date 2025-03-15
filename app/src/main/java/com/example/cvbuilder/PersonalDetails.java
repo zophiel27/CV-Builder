@@ -25,10 +25,15 @@ public class PersonalDetails extends AppCompatActivity {
             finish();
         });
         btnSave.setOnClickListener((v)->{
-            String name = etName.getText().toString();
-            String email = etEmail.getText().toString();
-            String url = etUrl.getText().toString();
-            String phone = etPhone.getText().toString();
+            String name = etName.getText().toString().trim();
+            String email = etEmail.getText().toString().trim();
+            String url = etUrl.getText().toString().trim();
+            String phone = etPhone.getText().toString().trim();
+
+//            if (!validateFields(name, email, phone)) {
+//                // If validation fails, do nothing (user sees the error)
+//                return;
+//            }
 
             Intent i = new Intent();
             i.putExtra("name", name);
@@ -49,4 +54,35 @@ public class PersonalDetails extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
     }
+//    private boolean validateFields(String name, String email, String phone) {
+//        boolean isValid = true;
+//
+//        if (name.isEmpty()) {
+//            etName.setError("Name is required");
+//            etName.requestFocus();
+//            isValid = false;
+//        }
+//
+//        if (email.isEmpty()) {
+//            etEmail.setError("Email is required");
+//            if (isValid) etEmail.requestFocus();
+//            isValid = false;
+//        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            etEmail.setError("Enter a valid email");
+//            if (isValid) etEmail.requestFocus();
+//            isValid = false;
+//        }
+//
+//        if (phone.isEmpty()) {
+//            etPhone.setError("Phone number is required");
+//            if (isValid) etPhone.requestFocus();
+//            isValid = false;
+//        } else if (phone.length() < 10) {
+//            etPhone.setError("Enter a valid phone number");
+//            if (isValid) etPhone.requestFocus();
+//            isValid = false;
+//        }
+//
+//        return isValid;
+//    }
 }

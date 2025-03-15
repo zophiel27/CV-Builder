@@ -16,14 +16,15 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
-            android:src="@drawable/profile_placeholder" />
-
+            android:src="@drawable/profile_placeholder"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sample_name"
             android:id="@+id/tvPreviewName"
             android:textSize="16sp"
+            android:textColor="@color/black"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -31,6 +32,7 @@
             android:text="@string/sample_email"
             android:id="@+id/tvPreviewEmail"
             android:textStyle="italic"
+            android:textColor="@color/black"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -38,6 +40,7 @@
             android:text="@string/sample_phone"
             android:id="@+id/tvPreviewPhone"
             android:textStyle="italic"
+            android:textColor="@color/black"
             />
         <TextView
             android:layout_width="wrap_content"
@@ -45,14 +48,168 @@
             android:text="@string/sample_url"
             android:id="@+id/tvPreviewUrl"
             android:textStyle="italic"
+            android:textColor="@color/black"
             />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:background="#2359A8"
+            android:layout_margin="10dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/cv_components"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/summary"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/tvPreviewSummary"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/cv_components"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/education"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FAST NUCES"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/tvPreviewEdu"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/bs_cs"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:id="@+id/tvPreviewEduProgram"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/cv_components"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/experience"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_company"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/tvPreviewExp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/exp_time"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:id="@+id/tvPreviewExpTime"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/cv_components"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/certifications"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_certificate"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/tvPreviewCert"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_org"
+                android:textSize="10sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:id="@+id/tvPreviewCertOrg"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/cv_components"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/references"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:id="@+id/tvPreviewRef"
+                />
+        </LinearLayout>
         <Button
             android:id="@+id/btnShareCV"
-            android:text="Share CV"
+            android:text="@string/share_cv"
             android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
-
     </LinearLayout>
 </ScrollView>

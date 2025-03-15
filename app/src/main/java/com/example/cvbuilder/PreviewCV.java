@@ -3,6 +3,7 @@ package com.example.cvbuilder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,14 +11,16 @@ import android.content.Intent;
 public class PreviewCV extends AppCompatActivity {
 
     ImageView ivPreviewProfilePic;
-    TextView tvPreviewName, tvPreviewEmail, tvPreviewPhone, tvPreviewUrl;
     Button btnShareCV;
+    TextView tvPreviewName, tvPreviewEmail, tvPreviewPhone, tvPreviewUrl, tvPreviewSummary;
 
+    private static final String TAG = "PreviewCV";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview_cv);
 
+        init();
 
 //        if (imageUriString != null) {
 //            Uri imageUri = Uri.parse(imageUriString);
@@ -34,19 +37,19 @@ public class PreviewCV extends AppCompatActivity {
         tvPreviewEmail = findViewById(R.id.tvPreviewEmail);
         tvPreviewPhone = findViewById(R.id.tvPreviewPhone);
         tvPreviewUrl = findViewById(R.id.tvPreviewUrl);
+        tvPreviewSummary = findViewById(R.id.tvPreviewSummary);
         btnShareCV = findViewById(R.id.btnShareCV);
 
         Intent intent = getIntent();
-
         tvPreviewName.setText(intent.getStringExtra("name"));
         tvPreviewEmail.setText(intent.getStringExtra("email"));
         tvPreviewPhone.setText(intent.getStringExtra("phone"));
         tvPreviewUrl.setText(intent.getStringExtra("url"));
+        tvPreviewSummary.setText(intent.getStringExtra("summary"));
     }
     private void shareCV(String name, String summary) {
         String cvData = "Name: " + name + "\n" +
                 "Summary: " + summary + "\n";
-        // Add other fields
 
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
