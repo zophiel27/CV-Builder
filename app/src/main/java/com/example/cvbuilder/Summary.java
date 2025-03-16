@@ -26,7 +26,6 @@ public class Summary extends AppCompatActivity {
             String summary = etSummary.getText().toString().trim();
 
             if (!validateField(summary)) {
-                // If validation fails, do nothing (user sees the error)
                 etSummary.setError("Field is required");
                 etSummary.requestFocus();
                 return;
@@ -46,10 +45,6 @@ public class Summary extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
     }
     private boolean validateField(String field) {
-        boolean isValid = true;
-        if (field.isEmpty()) {
-            isValid = false;
-        }
-        return isValid;
+        return !field.isEmpty();
     }
 }

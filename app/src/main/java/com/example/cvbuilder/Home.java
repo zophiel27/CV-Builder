@@ -87,15 +87,39 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, PreviewCV.class);
-                i.putExtra("name", name);
-                i.putExtra("email", email);
-                i.putExtra("phone", phone);
-                i.putExtra("url", url);
-                i.putExtra("summary", summary);
-//                i.putExtra("education", education);
-//                i.putExtra("experience", experience);
-//                i.putExtra("certifications", certifications);
-//                i.putExtra("references", references);
+                if(name != null){
+                    i.putExtra("name", name);
+                }
+                if(email != null){
+                    i.putExtra("email", email);
+                }
+                if(phone != null){
+                    i.putExtra("phone", phone);
+                }
+                if(url != null){
+                    i.putExtra("url", url);
+                }
+                if(summary != null){
+                    i.putExtra("summary", summary);
+                }
+                if(program != null){
+                    i.putExtra("program", program);
+                }
+                if(education != null){
+                    i.putExtra("education", education);
+                }
+                if(experience != null){
+                    i.putExtra("experience", experience);
+                }
+                if(time != null){
+                    i.putExtra("time", time);
+                }
+                if(certifications != null){
+                    i.putExtra("certifications", certifications);
+                }
+                if(references != null){
+                    i.putExtra("references", references);
+                }
                 if (profilePic != null) {
                     i.putExtra("profilePicUri", profilePic.toString());
                 }
@@ -122,10 +146,6 @@ public class Home extends AppCompatActivity {
                 {
                     profilePic = result.getData().getData();
                     checkIfReadyToPreview();
-                }
-                else
-                {
-                    Toast.makeText(this, "Select the image", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -199,6 +219,7 @@ public class Home extends AppCompatActivity {
                 });
     }
     private void checkIfReadyToPreview() {
+        // for an option to disable previewing CV till all info is filled
 //        if (profilePic != null &&
 //                name != null && !name.isEmpty() &&
 //                phone != null && !phone.isEmpty() &&
